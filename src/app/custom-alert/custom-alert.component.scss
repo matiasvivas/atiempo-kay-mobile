@@ -1,0 +1,33 @@
+/* custom-alert.component.scss */
+
+ion-content {
+  --ion-background-color: white;
+}
+
+ion-header {
+    background-color: #8dc540; /* Color verde */
+  }
+  
+  ion-toolbar {
+    color: white; /* Color del texto en la barra de título */
+  }
+
+
+  ion-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #8dc540; /* Color verde */
+  }
+  
+  div {
+    color: white; /* Color del texto en el contenido */
+  }
+  
+  img {
+    width: 80%; /* Ajusta el ancho al 80% */
+    max-width: 300px; /* Establece un ancho máximo para la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: auto; /* Centra la imagen horizontalmente */
+  }

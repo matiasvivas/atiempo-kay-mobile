@@ -1,0 +1,7 @@
+{
+  "name": "deleteapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
