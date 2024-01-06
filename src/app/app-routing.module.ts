@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'pagina-destacados',
     loadChildren: () => import('./pagina-destacados/pagina-destacados.module').then( m => m.PaginaDestacadosPageModule)
+  },
+  {
+    path: 'pagina-mensajes',
+    loadChildren: () => import('./pagina-mensajes/pagina-mensajes.module').then( m => m.PaginaMensajesPageModule)
   }
 ];
 

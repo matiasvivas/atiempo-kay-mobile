@@ -1,0 +1,20 @@
+ion-content {
+    /* Centra la imagen verticalmente y horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    opacity: 0; /* Comienza con opacidad 0 */
+    transition: opacity 3s ease-in-out; /* Transición de opacidad durante 3 segundos */
+  }
+  
+  /* Aplicar la animación a la clase */
+  .fade-in {
+    opacity: 1; /* Al agregar la clase, la opacidad se establece en 1 */
+  }
+  

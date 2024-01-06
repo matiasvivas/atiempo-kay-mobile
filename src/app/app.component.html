@@ -3,7 +3,7 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Bienvenido</ion-list-header>
+          <ion-list-header>Hola {{nombre}}</ion-list-header>
           <ion-note>kioscoayacucho247&#64;gmail.com</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
@@ -25,10 +25,10 @@
 
         <div style="text-align: center;">
           <br>
-          <ion-button href="https://wa.me/3434664555?text=Hola,%20Kiosco%20Ayacucho!%20quisiera%20hacerles%20una%20consulta%20desde%20la%20aplicacion%20mobile." target="_blank">
+          <ion-button (click)="abrirWhatsApp()">
             <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
             Escribinos por WhatsApp
-          </ion-button>
+          </ion-button>          
           
           <br>
           <ion-button (click)="cerrarSesion()">Cerrar sesión</ion-button>

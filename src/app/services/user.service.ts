@@ -18,7 +18,7 @@ export class UserService {
     })
   };
 
-  constructor(private http: HttpClient, private user: User, private userResponse: UserResponse) { }
+  constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User> {
     return this.http.get<User>(this.url);

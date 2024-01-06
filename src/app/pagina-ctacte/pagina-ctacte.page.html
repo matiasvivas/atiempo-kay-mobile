@@ -15,10 +15,10 @@
   </ion-header>
 
   <br>
-  <div id="container" style="text-align: center;" >
+  <div id="container" style="text-align: center;" style="background-color: #ffffff !important;">
     <strong class="capitalize">Detalle de tu cuenta corriente.</strong>
 
-    <ion-list *ngIf="cuentaCorriente && cuentaCorriente.ctacte">
+    <ion-list *ngIf="cuentaCorriente && cuentaCorriente.ctacte" style="background-color: #ffffff !important;">
       <ion-item *ngFor="let item of cuentaCorriente.ctacte">
         <ion-label>
           <h2>{{ item.detalle }}</h2>
@@ -40,7 +40,7 @@
   </div>
 </ion-content>
 
-<ion-button expand="full">
+<!--<ion-button expand="full">
   <ion-icon slot="start" name="icono-de-pago"></ion-icon>
   Pagar
-</ion-button>
+</ion-button>-->

@@ -38,7 +38,7 @@ export class PaginaCtactePage implements OnInit {
       this.totalMontoPendiente = this.cuentaCorriente.ctacte.reduce(
         (total: number, item: { montoPendiente: number }) => total + item.montoPendiente,
         0
-      );
+      )*1.10;
     } else {
       console.error('Error: cuentaCorriente.ctacte no es un array o está vacío');
       this.totalMontoPendiente = 0;

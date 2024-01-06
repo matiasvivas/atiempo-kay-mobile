@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { CustomAlertComponent } from '../custom-alert/custom-alert.component';
 
 import { UserService } from '../services/user.service';
@@ -19,14 +19,14 @@ export class HomePage {
   usuario: string = '';
   contrasena: string = '';
 
+  nombre: string = "";
+
   constructor(
     private modalController: ModalController,
     private userService: UserService,
     private userObject: User,
-    private userResponse: UserResponse,
     private router: Router,
-    private sharedDataService: SharedDataService,
-    private navCtrl: NavController
+    private sharedDataService: SharedDataService
   ) {}
 
   async iniciarSesion() {
@@ -40,9 +40,14 @@ export class HomePage {
 
     this.userService.postUsers(this.userObject).subscribe(
       async (response: UserResponse) => {
-        console.log(response.usuario);
+        console.log("Acceso: ",response.usuario);
 
         if (response && response.usuario) {
+
+          console.log("Nombre: ",response.nombre);
+          this.nombre = response.nombre;
+          this.sharedDataService.setUserResponseSubject(response);
+
           alertMessage = 'Credenciales válidas';
           alertImage = 'assets/icon/correcto.png';
 
@@ -66,10 +71,10 @@ export class HomePage {
 
         await modal.present();
 
-        // Cerrar la modal después de 2 segundos
+        // Cerrar la modal después de 3 segundos
         setTimeout(() => {
           modal.dismiss();
-        }, 2000);
+        }, 3000);
       },
       (err: HttpErrorResponse) => {
         console.log(err.error);
@@ -80,7 +85,7 @@ export class HomePage {
         // En caso de error, mostrar una modal de error
         this.presentErrorModal();
       }
-    );
+    );  
   }
 
   async presentErrorModal() {
