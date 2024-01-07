@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CustomAlertComponent } from '../custom-alert/custom-alert.component';
 
@@ -26,8 +26,18 @@ export class HomePage {
     private userService: UserService,
     private userObject: User,
     private router: Router,
-    private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService,
+    private renderer: Renderer2
   ) {}
+
+  ngAfterViewInit() {
+    // Agrega la clase 'show' después de que la vista se haya inicializado
+    this.renderer.addClass(document.getElementById('container'), 'show');
+    this.renderer.addClass(document.getElementById('loginButton'), 'show');
+    this.renderer.addClass(document.getElementById('inputAparecer1'), 'show');
+    this.renderer.addClass(document.getElementById('inputAparecer2'), 'show');
+    this.renderer.addClass(document.getElementById('bienvenidoAparecer'), 'show');
+  }
 
   async iniciarSesion() {
     let alertMessage: string;

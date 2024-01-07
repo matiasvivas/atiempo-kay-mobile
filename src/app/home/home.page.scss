@@ -1,3 +1,61 @@
+/* En tu estilo global o en un archivo de estilos específico */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInBienvenidoAparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#container {
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Empieza 20px más abajo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición original */
+  }
+}
+
+@keyframes fadeInFromInput {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Empieza 20px más abajo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición original */
+  }
+}
+
+#loginButton {
+  opacity: 0;
+  animation: fadeInFromBottom 5s ease forwards; /* Animación específica para el botón */
+}
+
+#inputAparecer1 {
+  opacity: 0;
+  animation: fadeInFromInput 5s ease forwards; /* Animación específica para el botón */
+}
+#inputAparecer2 {
+  opacity: 0;
+  animation: fadeInFromInput 5s ease forwards; /* Animación específica para el botón */
+}
+#bienvenidoAparecer {
+  opacity: 0;
+  animation: fadeInBienvenidoAparecer 7s ease forwards; /* Animación específica para el botón */
+}
+
+
 
 ion-content {
   --ion-background-color: white;

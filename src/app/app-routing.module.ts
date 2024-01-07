@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio-splash',
     pathMatch: 'full'
   },
   {
@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'pagina-mensajes',
     loadChildren: () => import('./pagina-mensajes/pagina-mensajes.module').then( m => m.PaginaMensajesPageModule)
+  },
+  {
+    path: 'inicio-splash',
+    loadChildren: () => import('./inicio-splash/inicio-splash.module').then( m => m.InicioSplashPageModule)
   }
 ];
 
