@@ -40,15 +40,20 @@
 #loginButton {
   opacity: 0;
   animation: fadeInFromBottom 5s ease forwards; /* Animación específica para el botón */
+  border-radius: 20px;
+  color: black !important; /* Color del texto negro */
+  width: 60%;
 }
 
 #inputAparecer1 {
   opacity: 0;
   animation: fadeInFromInput 5s ease forwards; /* Animación específica para el botón */
+  border-radius: 20px;
 }
 #inputAparecer2 {
   opacity: 0;
   animation: fadeInFromInput 5s ease forwards; /* Animación específica para el botón */
+  border-radius: 20px;
 }
 #bienvenidoAparecer {
   opacity: 0;

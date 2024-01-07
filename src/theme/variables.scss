@@ -2,9 +2,11 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
 :root {
   /** primary **/
-  --ion-color-primary:#b2a6ff;
+  /*--ion-color-primary:#b2a6ff;*/
+  --ion-color-primary: white;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -84,7 +86,8 @@
    */
 
   body {
-    --ion-color-primary: #b2a6ff;
+    /*--ion-color-primary: #b2a6ff;*/
+    --ion-color-primary: white;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255,255,255;

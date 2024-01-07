@@ -11,17 +11,17 @@
     </div>
     <br>
     <!-- Formulario de inicio de sesión -->
-    <ion-item>
+    <ion-item style="border-radius: 20px;">
       <ion-input id="inputAparecer1" placeholder="Usuario" type="text" [(ngModel)]="usuario"></ion-input>
     </ion-item>
     <br>
-    <ion-item>
+    <ion-item style="border-radius: 20px;">
       <ion-input id="inputAparecer2" placeholder="Contraseña"  type="password" [(ngModel)]="contrasena"></ion-input>
     </ion-item>
     <br>
 
     <!-- Botón de inicio de sesión -->
-    <ion-button id="loginButton" expand="full" (click)="iniciarSesion()">
+    <ion-button id="loginButton" (click)="iniciarSesion()">
       <ion-icon slot="start" name="log-in-outline"></ion-icon>
       Iniciar sesión
     </ion-button>
