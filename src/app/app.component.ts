@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { SharedDataService } from './services/shared-data.service';
@@ -6,13 +6,14 @@ import { UserResponse } from './services/userResponse';
 import { Plugins } from '@capacitor/core';
 
 const { App } = Plugins;
+const { StatusBar } = Plugins;
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   public appPages = [
     { title: 'Inicio', url: '/pagina-principal', icon: 'bookmark' },
     { title: 'Mensajes', url: '/pagina-mensajes', icon: 'mail' },
@@ -35,6 +36,14 @@ export class AppComponent{
       }
     });
 
+  }
+
+  ngOnInit() {
+    this.initializeApp();
+  }
+
+  async initializeApp() {
+    await StatusBar['setBackgroundColor']({ color: '#458cf4' });
   }
 
   abrirWhatsApp() {
