@@ -18,6 +18,12 @@ const config: CapacitorConfig = {
       'android-permission': 'INTERNET',  // Agrega el permiso de Internet
       // Agrega otros permisos aquí si es necesario
     }
+  },
+  plugins: {
+    'navigationBar': {
+      root: 'capacitor-custom-navigation-bar',
+      sourceRoot: 'src'
+    }
   }
 };
 

@@ -1,3 +1,21 @@
+ion-button {
+  border-radius: 20px;
+  border: solid;
+  color: #458cf4;
+}
+
+.cerrarSesion{
+  border-color: #458cf4;
+  border: solid;
+  border-radius: 20px;
+}
+
+.escribirWhatsapp{
+  border-color: #458cf4;
+  border: solid;
+  border-radius: 20px;
+}
+
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }

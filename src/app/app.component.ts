@@ -7,6 +7,8 @@ import { Plugins } from '@capacitor/core';
 
 const { App } = Plugins;
 const { StatusBar } = Plugins;
+const { navigationBar } = Plugins;
+
 
 @Component({
   selector: 'app-root',
@@ -15,11 +17,12 @@ const { StatusBar } = Plugins;
 })
 export class AppComponent implements OnInit{
   public appPages = [
-    { title: 'Inicio', url: '/pagina-principal', icon: 'bookmark' },
-    { title: 'Mensajes', url: '/pagina-mensajes', icon: 'mail' },
-    { title: 'Notificaciones', url: '/pagina-notificaciones', icon: 'paper-plane' },
-    { title: 'Destacados', url: '/pagina-destacados', icon: 'heart' },
-    { title: 'Mi cuenta corriente', url: '/pagina-ctacte', icon: 'archive' },
+    { title: 'Inicio', url: '/pagina-principal', icon: 'home' },
+    { title: 'Mi cuenta corriente', url: '/pagina-ctacte', icon: 'cash' },
+    { title: 'Notificaciones', url: '/pagina-notificaciones', icon: 'notifications' },
+    { title: 'Productos destacados', url: '/pagina-destacados', icon: 'medal' },
+    { title: 'Mis descuentos', url: '/pagina-mensajes', icon: 'heart-half' },
+    
   ];
   public labels = ['Por la mañana 9hs a 14hs',
     'Por la tarde 18hs a 22hs'
@@ -44,6 +47,7 @@ export class AppComponent implements OnInit{
 
   async initializeApp() {
     await StatusBar['setBackgroundColor']({ color: '#458cf4' });
+    await navigationBar['setNavigationBarColor']({ color: '#458cf4' });
   }
 
   abrirWhatsApp() {
