@@ -15,6 +15,7 @@ import { HomePageModule } from './home/home.module';
 import { CustomAlertComponent } from './custom-alert/custom-alert.component';
 import { PaginaDestacadosPageModule } from './pagina-destacados/pagina-destacados.module';
 import { PaginaNotificacionesPageModule } from './pagina-notificaciones/pagina-notificaciones.module';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 @NgModule({
   declarations: [AppComponent, CustomAlertComponent],
@@ -24,6 +25,7 @@ import { PaginaNotificacionesPageModule } from './pagina-notificaciones/pagina-n
     { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true },
     User,
     UserResponse,
+    FingerprintAIO,
   ],
   bootstrap: [AppComponent],
 })

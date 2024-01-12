@@ -5,3 +5,14 @@ ion-content {
   ion-input {
     background-color: rgb(224, 223, 223) !important;
   }
+
+  #container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .image-carousel {
+    min-width: 100%;
+    transition: transform 1s ease-in-out;
+  }
