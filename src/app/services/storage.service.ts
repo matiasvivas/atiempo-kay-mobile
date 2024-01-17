@@ -1,41 +1,43 @@
+// storage.service.ts
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins;
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
+  private storage: Storage | null = null;
 
-  constructor() { }
+  constructor(private storageService: Storage) {
+    this.init();
+  }
+
+  public async init() {
+    this.storage = await this.storageService.create();
+  }
 
   public async set(key: string, value: any) {
-    try {
-      await (Storage as any).set({ key, value });
-      return true;
-    } catch (error) {
-      console.error('Error al establecer en el almacenamiento', error);
-      return false;
+    if (this.storage) {
+      await this.storage.set(key, value);
+    } else {
+      console.error('Error: Database not created. Must call create() first');
     }
   }
 
   public async get(key: string) {
-    try {
-      const result = await (Storage as any).get({ key });
-      return result ? JSON.parse(result.value) : null;
-    } catch (error) {
-      console.error('Error al obtener del almacenamiento', error);
+    if (this.storage) {
+      return await this.storage.get(key);
+    } else {
+      console.error('Error: Database not created. Must call create() first');
       return null;
     }
   }
 
   public async remove(key: string) {
-    try {
-      await (Storage as any).remove({ key });
-      return true;
-    } catch (error) {
-      console.error('Error al eliminar del almacenamiento', error);
-      return false;
+    if (this.storage) {
+      await this.storage.remove(key);
+    } else {
+      console.error('Error: Database not created. Must call create() first');
     }
   }
 }

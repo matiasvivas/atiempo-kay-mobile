@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.kioscoatiempo',
-  appName: 'deleteapp',
+  appName: 'kioscoAyacucho',
   webDir: 'www',
   server: {
     androidScheme: 'https',

@@ -16,16 +16,19 @@ import { CustomAlertComponent } from './custom-alert/custom-alert.component';
 import { PaginaDestacadosPageModule } from './pagina-destacados/pagina-destacados.module';
 import { PaginaNotificacionesPageModule } from './pagina-notificaciones/pagina-notificaciones.module';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { Storage } from '@ionic/storage-angular';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent, CustomAlertComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, PaginaPrincipalPageModule, HomePageModule, PaginaDestacadosPageModule, PaginaNotificacionesPageModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, PaginaPrincipalPageModule, HomePageModule, PaginaDestacadosPageModule, PaginaNotificacionesPageModule, HttpClientModule, IonicStorageModule.forRoot()],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true },
     User,
     UserResponse,
     FingerprintAIO,
+    Storage,
   ],
   bootstrap: [AppComponent],
 })

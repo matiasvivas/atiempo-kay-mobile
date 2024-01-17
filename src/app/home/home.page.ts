@@ -12,8 +12,10 @@ import { Router } from '@angular/router';
 
 import { AlertsService } from '../services/alerts.service';
 import { StorageService } from '../services/storage.service';
+//import { Storage } from '@ionic/storage-angular';
 
 import { ScreenOrientation } from '@capacitor/screen-orientation';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 
 @Component({
@@ -35,11 +37,13 @@ export class HomePage {
     private sharedDataService: SharedDataService,
     private renderer: Renderer2,
     private alerts: AlertsService,
-    private storage: StorageService
-  ) {}
+    private storage: StorageService,
+    private faio: FingerprintAIO
+  ) { }
 
   ngOnInit() {
     ScreenOrientation.lock({orientation: 'portrait'});
+    this.storage.init();
   }
 
   ngAfterViewInit() {
@@ -53,35 +57,6 @@ export class HomePage {
 
   ionViewWillEnter() {
     //this.unLock()
-  }
-
-  async unLock() {
-    let Password="";
-    let Biometric="";
-
-    console.log("STORAGE",this.storage)
-    try{
-      Password = await this.storage.get('user_pass');
-      Biometric = await this.storage.get('biometric');
-      console.log("Pass:",Password)
-    }
-    catch(e){}
-
-     
-
-    if (Password||Password!="") {
-      if (Biometric) {
-        this.alerts.fingerPrintAIO()
-      } else {
-        this.alerts.checkPass()
-      }
-    } else this.alerts.setPass()
-  }
-
-  async removeData() {
-    await this.storage.remove('user_pass');
-    await this.storage.remove('biometric');
-    this.alerts.toastInfo("Data Removed!")
   }
 
   async iniciarSesion() {
@@ -98,7 +73,6 @@ export class HomePage {
         console.log("Acceso: ",response.usuario);
 
         if (response && response.usuario) {
-
           console.log("Nombre: ",response.nombre);
           this.nombre = response.nombre;
           this.sharedDataService.setUserResponseSubject(response);
@@ -111,9 +85,16 @@ export class HomePage {
           // Redirigir a la nueva página solo si las credenciales son válidas y el icono es correcto
           this.router.navigateByUrl('pagina-principal');
 
-          // Mostrar el diálogo de huella digital después de un inicio de sesión exitoso
-          //this.mostrarDialogoHuellaDigital(); funciona esto solo
-          //this.alerts.mostrarDialogoHuellaDigital(this.usuario,this.contrasena);
+          let usuarioEligioRecordar = true;
+          if (usuarioEligioRecordar) {
+            await this.storage.set('user_credentials', {
+              username: this.usuario,
+              password: this.contrasena,
+            });
+            console.log("STORAGE: ",this.storage);
+            console.log("STORAGE user_credentials: ",this.storage.get('user_credentials'));
+           
+          }
 
         } else {
           alertMessage = 'Credenciales inválidas';
@@ -149,6 +130,76 @@ export class HomePage {
 
 
   async iniciarSesionFinger() {
+
+    // Mostrar el diálogo de huella digital antes de enviar las credenciales
+  try {
+    const storedCredentials = await this.storage.get('user_credentials');
+    if(storedCredentials!=null){
+
+    const result = await this.faio.show({
+      title: 'Autenticación Biométrica',
+      description: 'Utiliza tu huella digital para iniciar sesión.',
+      fallbackButtonTitle: 'Utilizar contraseña',
+      disableBackup: true,
+    });
+  
+
+    // Autenticación biométrica exitosa, puedes continuar con el inicio de sesión
+    console.log('Autenticación biométrica exitosa: ', result);
+    console.log('Contenido de fingerPrint: ', result.withFingerprint);
+    // Iniciar sesión solo si la autenticación biométrica es exitosa
+    if (result=="biometric_success") {
+      console.log('Ingreso al if');
+      // Recuperar las credenciales asociadas con la huella digital
+      const storedCredentials = await this.storage.get('user_credentials');
+      console.log('Valor de storedCredentials: ',storedCredentials);
+    
+      if (storedCredentials!=null) {
+        // Utilizar las credenciales para continuar con el inicio de sesión
+        this.usuario = storedCredentials.username;
+        this.contrasena = storedCredentials.password;
+        console.log("STORAGE GET username: ",this.usuario);
+    
+        // Continuar con el proceso de inicio de sesión
+        await this.iniciarSesionValidar();
+
+      }
+    }
+  }
+
+  } catch (error) {
+    // Manejar errores de autenticación biométrica
+    console.error('Error en la autenticación biométrica', error);
+
+    // También puedes mostrar un mensaje al usuario
+    this.alerts.toastInfo('Error en la autenticación biométrica 2');
+  }
+
+  
+  }
+
+  
+
+
+  async presentErrorModal() {
+    const modal = await this.modalController.create({
+      component: CustomAlertComponent,
+      componentProps: {
+        message: 'Error al autenticar',
+        image: 'assets/icon/incorrecto.png',
+      },
+    });
+
+    await modal.present();
+
+    // Cerrar la modal después de 2 segundos
+    setTimeout(() => {
+      modal.dismiss();
+    }, 2000);
+  }
+
+  async iniciarSesionValidar() {
+
     let alertMessage: string;
     let alertImage: string;
 
@@ -162,12 +213,9 @@ export class HomePage {
         console.log("Acceso: ",response.usuario);
 
         if (response && response.usuario) {
-
           console.log("Nombre: ",response.nombre);
           this.nombre = response.nombre;
           this.sharedDataService.setUserResponseSubject(response);
-          
-          this.alerts.mostrarDialogoHuellaDigital(this.usuario,this.contrasena);
 
           alertMessage = 'Credenciales válidas';
           alertImage = 'assets/icon/correcto.png';
@@ -176,6 +224,7 @@ export class HomePage {
           this.sharedDataService.setUserResponse(response);
           // Redirigir a la nueva página solo si las credenciales son válidas y el icono es correcto
           this.router.navigateByUrl('pagina-principal');
+
         } else {
           alertMessage = 'Credenciales inválidas';
           alertImage = 'assets/icon/incorrecto.png';
@@ -205,40 +254,7 @@ export class HomePage {
         // En caso de error, mostrar una modal de error
         this.presentErrorModal();
       }
-    );  
+    ); 
   }
-
-
-  async presentErrorModal() {
-    const modal = await this.modalController.create({
-      component: CustomAlertComponent,
-      componentProps: {
-        message: 'Error al autenticar',
-        image: 'assets/icon/incorrecto.png',
-      },
-    });
-
-    await modal.present();
-
-    // Cerrar la modal después de 2 segundos
-    setTimeout(() => {
-      modal.dismiss();
-    }, 2000);
-  }
-
-  // Función para mostrar el diálogo de huella digital
-  /*async mostrarDialogoHuellaDigital() {
-    try {
-      const result = await this.fingerprintAIO.show({
-        title: 'TuAppNombre', // Utiliza title en lugar de clientId
-        disableBackup: true, // Deshabilita la opción de copia de seguridad
-      });
-  
-      console.log('Huella digital autenticada con éxito', result);
-    } catch (error) {
-      console.error('Error al autenticar mediante huella digital', error);
-    }
-  }*/
-
 
 }
