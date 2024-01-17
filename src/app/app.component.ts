@@ -19,9 +19,9 @@ export class AppComponent implements OnInit{
   public appPages = [
     { title: 'Inicio', url: '/pagina-principal', icon: 'home' },
     { title: 'Mi cuenta corriente', url: '/pagina-ctacte', icon: 'cash' },
-    { title: 'Notificaciones', url: '/pagina-notificaciones', icon: 'notifications' },
+    //{ title: 'Notificaciones', url: '/pagina-notificaciones', icon: 'notifications' },
     { title: 'Productos destacados', url: '/pagina-destacados', icon: 'medal' },
-    { title: 'Mis descuentos', url: '/pagina-mensajes', icon: 'heart-half' },
+    //{ title: 'Mis descuentos', url: '/pagina-mensajes', icon: 'heart-half' },
     
   ];
   public labels = ['Por la mañana 9hs a 14hs',

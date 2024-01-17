@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CustomAlertComponent } from '../custom-alert/custom-alert.component';
 
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 
 import { AlertsService } from '../services/alerts.service';
 import { StorageService } from '../services/storage.service';
+
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 
 @Component({
@@ -35,6 +37,10 @@ export class HomePage {
     private alerts: AlertsService,
     private storage: StorageService
   ) {}
+
+  ngOnInit() {
+    ScreenOrientation.lock({orientation: 'portrait'});
+  }
 
   ngAfterViewInit() {
     // Agrega la clase 'show' después de que la vista se haya inicializado
@@ -107,7 +113,7 @@ export class HomePage {
 
           // Mostrar el diálogo de huella digital después de un inicio de sesión exitoso
           //this.mostrarDialogoHuellaDigital(); funciona esto solo
-          this.alerts.mostrarDialogoHuellaDigital(this.usuario,this.contrasena);
+          //this.alerts.mostrarDialogoHuellaDigital(this.usuario,this.contrasena);
 
         } else {
           alertMessage = 'Credenciales inválidas';

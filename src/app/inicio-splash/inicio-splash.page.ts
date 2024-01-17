@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 @Component({
   selector: 'app-inicio-splash',
@@ -18,6 +19,7 @@ export class InicioSplashPage implements OnInit {
   }
 
   ngOnInit() {
+    ScreenOrientation.lock({orientation: 'portrait'});
   }
 
 }

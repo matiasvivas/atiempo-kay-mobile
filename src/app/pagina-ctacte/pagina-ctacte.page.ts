@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../services/shared-data.service';
 import { UserResponse } from '../services/userResponse';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 @Component({
   selector: 'app-pagina-ctacte',
@@ -15,6 +16,9 @@ export class PaginaCtactePage implements OnInit {
   constructor(private sharedDataService: SharedDataService) {}
 
   ngOnInit() {
+
+    ScreenOrientation.lock({orientation: 'portrait'});
+
     const response = this.sharedDataService.getUserResponse();
 
     this.userResponse = new UserResponse();

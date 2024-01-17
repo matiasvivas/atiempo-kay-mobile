@@ -8,29 +8,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" style="display: flex; justify-content: center; align-items: center;">
-  <div #container2 id="container" style="text-align: center; overflow-x: hidden; width: 99%; height: 60%;">
-    <div class="image-carousel" style="display: flex;">
+  <div #container id="container" style="text-align: center; overflow-x: hidden; width: 99%; height: 60%;">
+    <div class="image-carousel" style="display: flex; overflow-x: scroll;">
       <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
-        <img src="assets/icon/correcto.png" alt="Imagen 1">
+        <img src="assets/productos/pilsen.png" alt="Imagen 1">
         <div class="card-content">
-          <h3>Producto 1</h3>
-          <p>Descripción del producto 1.</p>
-          <p>Precio: $10.00</p>
+          <h3>Santa Fe Pilsen 1L</h3>
+          <p>Cerveza alcoholica</p>
+          <p>Precio no publicado</p>
         </div>
       </div>
 
       <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
-        <img src="assets/icon/incorrecto.png" alt="Imagen 2">
+        <img src="assets/productos/latapilsen.png" alt="Imagen 2">
         <div class="card-content">
-          <h3>Producto 2</h3>
-          <p>Descripción del producto 2.</p>
-          <p>Precio: $15.00</p>
+          <h3>Lata Santa Fe Pilsen</h3>
+          <p>Cerveza rubia 473cc</p>
+          <p>Precio no publicado</p>
         </div>
       </div>
 
       <!-- Agrega más tarjetas según sea necesario -->
     </div>
-    <strong class="capitalize">Aquí verás nuestros productos destacados.</strong>
   </div>
 
 
@@ -39,37 +38,65 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        <img src="assets/icon/correcto.png" alt="Imagen 1" style="width: 100%;">
+        <img src="assets/productos/milanesas.png" alt="Imagen 1" style="width: 100%; height: 90%; border-radius: 20px;">
       </ion-col>
       <ion-col size="6">
-        <img src="assets/icon/correcto.png" alt="Imagen 2" style="width: 100%;">
+        <img src="assets/productos/medallones.png" alt="Imagen 2" style="width: 100%; height: 90%; border-radius: 20px;">
       </ion-col>
     </ion-row>
     <ion-row>
       <!-- Agrega más columnas según sea necesario -->
       <!-- Por ejemplo, para una tercera imagen -->
-      <ion-col size="6">
-        <div #container id="container" style="text-align: center; overflow-x: hidden;">
-          <div class="image-carousel" style="display: flex;">
+      <ion-col size="12">
+        <div #container id="container2" style="text-align: center; overflow-x: hidden;">
+          <div id="tees" class="image-carousel" style="display: flex; overflow-x: scroll;">
             <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
-              <img src="assets/icon/correcto.png" alt="Imagen 1">
+              <img src="assets/productos/terrabusi.png" alt="Imagen 1">
               <div class="card-content">
-                <h3>Producto 1</h3>
-                <p>Descripción del producto 1.</p>
-                <p>Precio: $10.00</p>
+                <h3>Galletitas Terrabussi</h3>
+                <p>Paquete de galletitas surtidas</p>
+                <p>Precio no publicado</p>
               </div>
             </div>
       
             <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
-              <img src="assets/icon/incorrecto.png" alt="Imagen 2">
+              <img src="assets/productos/chocolatemilka.png" alt="Imagen 2">
               <div class="card-content">
-                <h3>Producto 2</h3>
-                <p>Descripción del producto 2.</p>
-                <p>Precio: $15.00</p>
+                <h3>Chocolate Milka</h3>
+                <p>Chocolates</p>
+                <p>Precio no publicado</p>
               </div>
             </div>
+
+            <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
+              <img src="assets/productos/coca2L.png" alt="Imagen 2">
+              <div class="card-content">
+                <h3>Coca Cola 2L</h3>
+                <p>Retornable clasica</p>
+                <p>Precio no publicado</p>
+              </div>
+            </div>
+
+            <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
+              <img src="assets/productos/alfajor.png" alt="Imagen 1">
+              <div class="card-content">
+                <h3>Alfajor Terrabussi</h3>
+                <p>Dulce de leche</p>
+                <p>Precio no publicado</p>
+              </div>
+            </div>
+
+            <div class="card" style="background-color: white; border-radius: 10px; padding: 10px; margin: 5px;">
+              <img src="assets/productos/alfajororeo.png" alt="Imagen 1">
+              <div class="card-content">
+                <h3>Alfajor Oreo</h3>
+                <p>Triple</p>
+                <p>Precio no publicado</p>
+              </div>
+            </div>
+
           </div>
-        </div>>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

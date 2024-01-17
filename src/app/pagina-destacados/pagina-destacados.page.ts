@@ -1,4 +1,5 @@
-import { Component, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 @Component({
   selector: 'app-pagina-destacados',
@@ -9,6 +10,10 @@ export class PaginaDestacadosPage implements AfterViewInit  {
   @ViewChild('container', { static: false }) container!: ElementRef;
 
   constructor(private renderer: Renderer2) {}
+
+  ngOnInit() {
+    ScreenOrientation.lock({orientation: 'portrait'});
+  }
 
   ngAfterViewInit() {
     if (this.container) {
