@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
     //{ title: 'Notificaciones', url: '/pagina-notificaciones', icon: 'notifications' },
     { title: 'Productos destacados', url: '/pagina-destacados', icon: 'medal' },
     //{ title: 'Mis descuentos', url: '/pagina-mensajes', icon: 'heart-half' },
+    { title: 'Productos privados', url: '/productos-privados', icon: 'medal' },
     
   ];
   public labels = ['Por la mañana 9hs a 14hs',

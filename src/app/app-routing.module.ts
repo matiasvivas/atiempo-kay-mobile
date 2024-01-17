@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'inicio-splash',
     loadChildren: () => import('./inicio-splash/inicio-splash.module').then( m => m.InicioSplashPageModule)
+  },
+  {
+    path: 'productos-privados',
+    loadChildren: () => import('./productos-privados/productos-privados.module').then( m => m.ProductosPrivadosPageModule)
   }
 ];
 

@@ -82,6 +82,7 @@ export class HomePage {
 
           // Almacenar la respuesta del usuario en el servicio
           this.sharedDataService.setUserResponse(response);
+          console.log("productos: ",response.productosPriv);
           // Redirigir a la nueva página solo si las credenciales son válidas y el icono es correcto
           this.router.navigateByUrl('pagina-principal');
 

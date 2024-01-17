@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Productos Privados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <br>
+  <div id="container" style="text-align: center;" style="background-color: #ffffff !important;">
+
+    <ion-searchbar (ionChange)="buscarProductos($event)" placeholder="Buscar productos"></ion-searchbar>
+
+    <ion-list *ngIf="productosPrivados && productosPrivados.productosPriv" style="background-color: #ffffff !important;">
+      <ion-item *ngFor="let item of productosPrivados.productosPriv">
+        <ion-label>
+          <h2>{{ item.nombre }}</h2>
+          <p>Stock actual: {{ item.stock }}</p>
+          <p>Precio: {{ item.precio }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+</ion-content>
