@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ nombre }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <h2>Valores actuales</h2>
+    <ion-item>
+      <ion-label>
+        <h2>{{ nombre }}</h2>
+        <p>Codigo: {{ codigo }}</p>
+        <p>Stock actual: {{ stock }}</p>
+        <p>Precio actual: {{ precio }}</p>
+      </ion-label>
+    </ion-item>
+
+    <h2>Nuevos valores</h2>
+    <!-- Nuevos campos de entrada para modificar el stock y el precio -->
+    <ion-item>
+      <ion-label>Stock Nuevo</ion-label>
+      <ion-input type="number" [(ngModel)]="nuevoStock"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Precio Nuevo</ion-label>
+      <ion-input type="number" [(ngModel)]="nuevoPrecio"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botones Modificar y Cancelar -->
+  <div style="text-align: center;">
+  <ion-button class="btnmod" (click)="modificarProducto()">Modificar</ion-button>
+  <ion-button class="btnmod" (click)="cerrarModal()">Cancelar</ion-button>
+  </div>
+</ion-content>

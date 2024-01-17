@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../services/shared-data.service';
 import { UserResponse } from '../services/userResponse';
 import { ScreenOrientation } from '@capacitor/screen-orientation';
+import { ModalController } from '@ionic/angular';
+import {DetalleProductoModalPagePage} from '../detalle-producto-modal-page/detalle-producto-modal-page.page'
+
 
 @Component({
   selector: 'app-productos-privados',
@@ -12,9 +15,10 @@ export class ProductosPrivadosPage implements OnInit {
 
   productosPrivados: { productosPriv: any[] } = { productosPriv: [] };
   userResponse: UserResponse = new UserResponse();
-  originalProductosPrivados: any[] = []; 
+  originalProductosPrivados: any[] = [];
+  itemSeleccionado: any; 
 
-  constructor(private sharedDataService: SharedDataService) {}
+  constructor(private sharedDataService: SharedDataService, private modalController: ModalController) {}
 
   ngOnInit() {
 
@@ -51,6 +55,26 @@ export class ProductosPrivadosPage implements OnInit {
       );
     }
   }
+
+  abrirDetalleModal(item: any) {
+    this.itemSeleccionado = item; // Almacena el item seleccionado
+    this.presentarModal();
+  }
+
+  async presentarModal() {
+    const modal = await this.modalController.create({
+      component: DetalleProductoModalPagePage,
+      componentProps: {
+        nombre: this.itemSeleccionado.nombre,
+        stock: this.itemSeleccionado.stock,
+        precio: this.itemSeleccionado.precio,
+        codigo: this.itemSeleccionado.codigo
+      }
+    });
+
+    return await modal.present();
+  }
+  
   
 
 }

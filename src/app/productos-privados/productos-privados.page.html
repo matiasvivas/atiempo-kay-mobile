@@ -19,8 +19,8 @@
 
     <ion-searchbar (ionChange)="buscarProductos($event)" placeholder="Buscar productos"></ion-searchbar>
 
-    <ion-list *ngIf="productosPrivados && productosPrivados.productosPriv" style="background-color: #ffffff !important;">
-      <ion-item *ngFor="let item of productosPrivados.productosPriv">
+    <ion-list *ngIf="productosPrivados && productosPrivados.productosPriv">
+      <ion-item *ngFor="let item of productosPrivados.productosPriv" (click)="abrirDetalleModal(item)" style="background-color: #ffffff !important;">
         <ion-label>
           <h2>{{ item.nombre }}</h2>
           <p>Stock actual: {{ item.stock }}</p>

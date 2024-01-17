@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'productos-privados',
     loadChildren: () => import('./productos-privados/productos-privados.module').then( m => m.ProductosPrivadosPageModule)
+  },
+  {
+    path: 'detalle-producto-modal-page',
+    loadChildren: () => import('./detalle-producto-modal-page/detalle-producto-modal-page.module').then( m => m.DetalleProductoModalPagePageModule)
   }
 ];
 
