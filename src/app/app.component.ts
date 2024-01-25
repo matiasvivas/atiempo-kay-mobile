@@ -22,7 +22,8 @@ export class AppComponent implements OnInit{
     //{ title: 'Notificaciones', url: '/pagina-notificaciones', icon: 'notifications' },
     { title: 'Productos destacados', url: '/pagina-destacados', icon: 'medal' },
     //{ title: 'Mis descuentos', url: '/pagina-mensajes', icon: 'heart-half' },
-    { title: 'Productos privados', url: '/productos-privados', icon: 'medal' },
+    //{ title: 'Productos privados', url: '/productos-privados', icon: 'medal' },
+    { title: 'Productos privados', url: '/productos-privados', icon: 'medal', showForUser: 'Mati & Sol' },
     
   ];
   public labels = ['Por la mañana 9hs a 14hs',
@@ -37,9 +38,17 @@ export class AppComponent implements OnInit{
     this.sharedDataService.userResponse$.subscribe(response => {
       if (response && response.nombre) {
         this.nombre = response.nombre;
+        this.updateMenuOptions(response.nombre);
       }
     });
 
+  }
+
+  updateMenuOptions(userName: string) {
+    // Filtra las opciones del menú según el nombre del usuario
+    this.appPages = this.appPages.filter((page) =>
+      (page.showForUser ? userName === page.showForUser : true)
+    );
   }
 
   ngOnInit() {

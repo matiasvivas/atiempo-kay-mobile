@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 import { UserResponse } from './userResponse';
+import { GenericaResponse } from './genericaResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class UserService {
 
   postUsers(user:any): Observable<UserResponse> {
     return this.http.post<UserResponse>(this.url+'/in', user, this.httpOptions);
+  }
+
+  postProducto(resp:any): Observable<GenericaResponse> {
+    return this.http.post<GenericaResponse>(this.url+'/upd', resp, this.httpOptions);
   }
 }

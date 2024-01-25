@@ -51,7 +51,7 @@ export class ProductosPrivadosPage implements OnInit {
     } else {
       // Realizar la búsqueda de manera eficiente utilizando filter y toLowerCase
       this.productosPrivados.productosPriv = this.originalProductosPrivados.filter(item => 
-        item.nombre.toLowerCase().includes(textoBusqueda)
+        typeof item.nombre === 'string' && item.nombre.toLowerCase().includes(textoBusqueda)
       );
     }
   }

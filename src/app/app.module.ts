@@ -18,6 +18,8 @@ import { PaginaNotificacionesPageModule } from './pagina-notificaciones/pagina-n
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { Storage } from '@ionic/storage-angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { GenericaResponse } from './services/genericaResponse';
+import { ProductoRequest } from './services/productoRequest';
 
 @NgModule({
   declarations: [AppComponent, CustomAlertComponent],
@@ -29,6 +31,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     UserResponse,
     FingerprintAIO,
     Storage,
+    GenericaResponse,
+    ProductoRequest
   ],
   bootstrap: [AppComponent],
 })
